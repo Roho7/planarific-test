@@ -1,3 +1,4 @@
+import Navbar from "../(components)/navbar";
 import { ModelProvider } from "../_providers/useModel";
 
 export default function ModelsLayout({
@@ -5,5 +6,12 @@ export default function ModelsLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <ModelProvider>{children}</ModelProvider>;
+  return (
+    <ModelProvider>
+      <div className="flex flex-col box-border h-screen">
+        <Navbar />
+        {children}
+      </div>
+    </ModelProvider>
+  );
 }

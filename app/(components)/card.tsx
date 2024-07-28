@@ -12,7 +12,8 @@ const ModelCard = ({ model }: Props) => {
   const { handleModelClick } = useModel();
   return (
     <div
-      className="bg-gray-700 p-2 rounded flex flex-col gap-2"
+      role="button"
+      className="bg-gray-200 p-2 rounded flex flex-col gap-2 hover:bg-gray-300 "
       onClick={() => {
         handleModelClick(model.id);
       }}>
@@ -20,7 +21,7 @@ const ModelCard = ({ model }: Props) => {
         src={`${process.env.NEXT_PUBLIC_URL}${model.thumbnail}`}
         alt={model.description}
       />
-      <h1 className="text-white text-lg">{model.description}</h1>
+      <h1 className="text-gray-800 text-sm font-medium">{model.description}</h1>
     </div>
   );
 };

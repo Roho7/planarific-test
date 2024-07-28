@@ -1,12 +1,19 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  ImgHTMLAttributes,
+  DetailedHTMLProps,
+} from "react";
 import Image from "next/image";
 
 type AuthorizedImageProps = {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
 };
 
-const AuthorizedImage = ({ src, alt }: AuthorizedImageProps) => {
+const AuthorizedImage = ({ src, alt, width, height }: AuthorizedImageProps) => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -55,8 +62,8 @@ const AuthorizedImage = ({ src, alt }: AuthorizedImageProps) => {
       <Image
         src={imageSrc}
         alt={alt}
-        width={200}
-        height={200}
+        width={width || 200}
+        height={height || 200}
         className="object-cover w-full"
       />
     </div>
