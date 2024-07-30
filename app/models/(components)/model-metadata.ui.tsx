@@ -1,7 +1,8 @@
-import Button from "@/app/(components)/button";
-import useModel from "@/app/_providers/useModel";
-import clsx from "clsx";
-import React, { useState } from "react";
+import Button from '@/app/(components)/button';
+import useModel from '@/app/_providers/useModel';
+import clsx from 'clsx';
+import React, { useState } from 'react';
+import { CgChevronDown, CgChevronUp } from 'react-icons/cg';
 
 type Props = {
   showMetadata: boolean;
@@ -14,23 +15,25 @@ const ModelMetadata = ({ showMetadata, setShowMetadata }: Props) => {
   return (
     <div
       className={clsx(
-        "w-full bg-gray-200 transition-all ease-in-out relative",
-        showMetadata ? "flex-grow" : "h-0",
-      )}>
+        'w-full bg-gray-200 transition-all ease-in-out relative',
+        showMetadata ? 'flex-grow' : 'h-0'
+      )}
+    >
       <Button
         buttonProps={{ onClick: () => setShowMetadata(!showMetadata) }}
-        className="bg-[#e47f63] py-1 px-2 rounded-md absolute left-2 -top-12">
-        Toggle
+        className='bg-[#e47f63] py-1 px-2 rounded-md absolute left-2 -top-12'
+      >
+        {showMetadata ? <CgChevronDown /> : <CgChevronUp />}
       </Button>
-      <table className={clsx("w-full")}>
-        <tbody className="">
-          <tr className="bg-gray-300 text-gray-600">
+      <table className={clsx('w-full')}>
+        <tbody className=''>
+          <tr className='bg-gray-300 text-gray-600'>
             <th>State</th>
             <th>City</th>
             <th>Addresses</th>
             <th>Postal Code</th>
           </tr>
-          <tr className="text-center text-gray-800">
+          <tr className='text-center text-gray-800'>
             <td>{activeModel?.state}</td>
             <td>{activeModel?.city}</td>
             <td>

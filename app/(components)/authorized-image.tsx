@@ -3,8 +3,8 @@ import {
   useEffect,
   ImgHTMLAttributes,
   DetailedHTMLProps,
-} from "react";
-import Image from "next/image";
+} from 'react';
+import Image from 'next/image';
 
 type AuthorizedImageProps = {
   src: string;
@@ -22,10 +22,10 @@ const AuthorizedImage = ({ src, alt, width, height }: AuthorizedImageProps) => {
       try {
         const response = await fetch(src, {
           headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_SECRET_TOKEN}`,
-            "Access-Control-Allow-Origin": "http://localhost:3001",
+            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SECRET_TOKEN}`,
+            'Access-Control-Allow-Origin': 'http://localhost:3001',
           },
-          mode: "cors",
+          mode: 'cors',
         });
 
         if (!response.ok) {
@@ -35,7 +35,7 @@ const AuthorizedImage = ({ src, alt, width, height }: AuthorizedImageProps) => {
         const blob = await response.blob();
         const objectUrl = URL.createObjectURL(blob);
         setImageSrc(objectUrl);
-        console.log("objectUrl", objectUrl);
+        console.log('objectUrl', objectUrl);
         return objectUrl;
       } catch (error: any) {
         setError(error.message);
@@ -45,7 +45,7 @@ const AuthorizedImage = ({ src, alt, width, height }: AuthorizedImageProps) => {
     fetchData();
 
     return () => {
-      URL.revokeObjectURL(imageSrc || "");
+      URL.revokeObjectURL(imageSrc || '');
     };
   }, [src]);
 
@@ -58,13 +58,13 @@ const AuthorizedImage = ({ src, alt, width, height }: AuthorizedImageProps) => {
   }
 
   return (
-    <div className="max-w-xs object-cover">
+    <div className='max-w-xs object-cover rounded overflow-hidden w-30 h-40'>
       <Image
         src={imageSrc}
         alt={alt}
         width={width || 200}
         height={height || 200}
-        className="object-cover w-full"
+        className='object-cover w-full'
       />
     </div>
   );

@@ -8,6 +8,7 @@ type Props = {
   targetRotation: THREE.Quaternion | null;
   isWireframe: boolean;
   setClickedPoint: React.Dispatch<React.SetStateAction<THREE.Vector3 | null>>;
+  modelPosition: THREE.Vector3 | null;
 };
 
 const Model = ({
@@ -15,6 +16,7 @@ const Model = ({
   targetRotation,
   isWireframe = false,
   setClickedPoint,
+  modelPosition,
 }: Props) => {
   if (!modelPath) return null;
 
@@ -46,6 +48,9 @@ const Model = ({
 
           // @ts-ignore
           mesh.material.wireframe = false;
+          mesh.castShadow = true;
+          mesh.receiveShadow = true;
+          child.receiveShadow = true;
           // @ts-ignore
           mesh.material.color.set('white');
         }
@@ -62,7 +67,9 @@ const Model = ({
         setClickedPoint(e.point);
       }}
     >
-      <primitive object={scene} />
+      <mesh castShadow position={modelPosition || [0, 0, 0]}>
+        <primitive object={scene} />
+      </mesh>
     </group>
   );
 };
