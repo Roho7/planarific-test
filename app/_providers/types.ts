@@ -13,4 +13,5 @@ export type ModelType = {
   postal_code: string;
   thumbnail: string;
   model: string;
+  description: string;
 };

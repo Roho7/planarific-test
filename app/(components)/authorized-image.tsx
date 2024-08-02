@@ -54,7 +54,7 @@ const AuthorizedImage = ({ src, alt, width, height }: AuthorizedImageProps) => {
   }
 
   if (!imageSrc) {
-    return <div>Loading...</div>;
+    return <div className='text-gray-400 animate-pulse'>Loading...</div>;
   }
 
   return (

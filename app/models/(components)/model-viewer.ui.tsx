@@ -115,6 +115,9 @@ const ModelViewer = ({ showMetadata }: Props) => {
       <div className='absolute top-5 right-5 text-gray-800 bg-slate-200 p-1 text-xs'>
         X: {cameraPosition.x}, Y: {cameraPosition.y}, Z: {cameraPosition.z}
       </div>
+      <span className='absolute top-5 left-1/2 rounded-sm -translate-x-1/2 p-2 bg-gray-500'>
+        {activeModel?.description}
+      </span>
       <div
         className='absolute top-5 left-5 text-gray-800 bg-slate-200 p-1 text-xs'
         role='button'

@@ -17,7 +17,7 @@ const Button = ({
   return (
     <button
       className={clsx(
-        ' flex justify-center w-fit font-medium text-xs text-nowrap px-4 py-2 rounded-md ',
+        ' flex justify-center font-medium text-xs text-nowrap px-4 py-2 rounded-md ',
         className,
         type === 'primary' &&
           'bg-planarific-200 border border-planarific-500 text-white hover:bg-planarific-500',

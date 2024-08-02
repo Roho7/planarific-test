@@ -38,7 +38,10 @@ export const ModelProvider = ({ children }: { children: React.ReactNode }) => {
     setIsFetching(true);
     try {
       const data = await fetchModel(modelId);
-      setActiveModel(data);
+      setActiveModel({
+        ...data,
+        description: modelList?.find((m) => m.id === modelId)?.description,
+      });
     } catch (e) {
       console.error(e);
     }

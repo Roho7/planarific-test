@@ -123,21 +123,6 @@ function FaceAlignmentController({
       >
         Reset
       </Button>
-      <Button
-        buttonProps={{
-          onClick: () =>
-            setTargetRotation(
-              (prev) =>
-                prev?.multiply(
-                  new THREE.Quaternion().setFromEuler(
-                    new THREE.Euler(0, Math.PI / 4, 0)
-                  )
-                ) || null
-            ),
-        }}
-      >
-        Rotate
-      </Button>
     </div>
   );
 }

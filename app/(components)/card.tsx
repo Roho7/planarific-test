@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { act } from 'react';
 import { ModelListItemType } from '../_providers/types';
 import AuthorizedImage from './authorized-image';
 import { useRouter } from 'next/navigation';
 import useModel from '../_providers/useModel';
+import clsx from 'clsx';
 
 type Props = {
   model: ModelListItemType;
 };
 
 const ModelCard = ({ model }: Props) => {
-  const { handleModelClick } = useModel();
+  const { handleModelClick, activeModel } = useModel();
   return (
     <div
       role='button'
-      className='bg-gray-200 p-2 rounded-md flex flex-col gap-2 hover:bg-gray-300 '
+      className={clsx(
+        'bg-gray-200 p-2 rounded-md flex flex-col gap-2 hover:bg-gray-300 ',
+        activeModel?.id === model.id && 'bg-planarific-200'
+      )}
       onClick={() => {
         handleModelClick(model.id);
       }}
