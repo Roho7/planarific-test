@@ -22,12 +22,7 @@ const Model = ({
 
   const { scene } = useGLTF(modelPath);
   const groupRef = useRef<any>();
-
-  useFrame(() => {
-    if (groupRef.current && targetRotation) {
-      groupRef.current.quaternion.slerp(targetRotation, 0.1);
-    }
-  });
+  // const modelRef = useRef<any>();
 
   useEffect(() => {
     if (isWireframe) {

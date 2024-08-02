@@ -1,6 +1,7 @@
 import useModel from '@/app/_providers/useModel';
 import {
   Box,
+  Center,
   ContactShadows,
   Environment,
   OrbitControls,
@@ -100,6 +101,7 @@ const ModelViewer = ({ showMetadata }: Props) => {
             setClickedPoint={setClickedPoint}
             modelPosition={modelPosition}
           />
+
           <OrbitControls enableDamping />
           <CameraController
             align={reset}

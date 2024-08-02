@@ -1,6 +1,13 @@
 import Button from '@/app/(components)/button';
 import { Dispatch, SetStateAction, useEffect } from 'react';
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
+import {
+  BiArrowFromBottom,
+  BiArrowFromTop,
+  BiChevronDown,
+  BiChevronLeft,
+  BiChevronRight,
+  BiChevronUp,
+} from 'react-icons/bi';
 import * as THREE from 'three';
 function FaceAlignmentController({
   reset,
@@ -30,22 +37,74 @@ function FaceAlignmentController({
         gap: '5px',
       }}
     >
-      <div>
+      <div className='grid grid-cols-2 gap-1'>
         <Button
+          type='secondary'
           buttonProps={{
             onClick: () =>
               setModelPosition(
-                (prev) => new THREE.Vector3(0, (prev?.y || 1) + 1, 0)
+                (prev) =>
+                  new THREE.Vector3(prev?.x, (prev?.y || 1) + 1, prev?.z)
+              ),
+          }}
+        >
+          <BiArrowFromBottom />
+        </Button>
+        <Button
+          type='secondary'
+          buttonProps={{
+            onClick: () =>
+              setModelPosition(
+                (prev) =>
+                  new THREE.Vector3(prev?.x, (prev?.y || 1) - 1, prev?.z)
+              ),
+          }}
+        >
+          <BiArrowFromTop />
+        </Button>
+        <Button
+          type='secondary'
+          buttonProps={{
+            onClick: () =>
+              setModelPosition(
+                (prev) =>
+                  new THREE.Vector3((prev?.x || 1) - 1, prev?.y, prev?.z)
+              ),
+          }}
+        >
+          <BiChevronLeft />
+        </Button>
+        <Button
+          type='secondary'
+          buttonProps={{
+            onClick: () =>
+              setModelPosition(
+                (prev) =>
+                  new THREE.Vector3((prev?.x || 1) + 1, prev?.y, prev?.z)
+              ),
+          }}
+        >
+          <BiChevronRight />
+        </Button>
+        <Button
+          type='secondary'
+          buttonProps={{
+            onClick: () =>
+              setModelPosition(
+                (prev) =>
+                  new THREE.Vector3(prev?.x, prev?.y, (prev?.z || 1) + 1)
               ),
           }}
         >
           <BiChevronUp />
         </Button>
         <Button
+          type='secondary'
           buttonProps={{
             onClick: () =>
               setModelPosition(
-                (prev) => new THREE.Vector3(0, (prev?.y || 1) - 1, 0)
+                (prev) =>
+                  new THREE.Vector3(prev?.x, prev?.y, (prev?.z || 1) - 1)
               ),
           }}
         >

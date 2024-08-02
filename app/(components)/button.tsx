@@ -5,14 +5,24 @@ type ButtonProps = {
   children: React.ReactNode;
   buttonProps: ButtonHTMLAttributes<HTMLButtonElement>;
   className?: string;
+  type?: 'primary' | 'secondary';
 };
 
-const Button = ({ children, buttonProps, className }: ButtonProps) => {
+const Button = ({
+  children,
+  buttonProps,
+  className,
+  type = 'primary',
+}: ButtonProps) => {
   return (
     <button
       className={clsx(
-        'bg-planarific-200 font-medium text-xs text-nowrap px-4 py-2 rounded-md text-white hover:bg-planarific-500',
-        className
+        ' flex justify-center w-fit font-medium text-xs text-nowrap px-4 py-2 rounded-md ',
+        className,
+        type === 'primary' &&
+          'bg-planarific-200 border border-planarific-500 text-white hover:bg-planarific-500',
+        type === 'secondary' &&
+          'bg-white text-gray-600 border border-gray-400 hover:bg-gray-200'
       )}
       {...buttonProps}
     >
